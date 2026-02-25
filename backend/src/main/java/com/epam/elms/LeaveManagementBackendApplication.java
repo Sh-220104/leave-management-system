@@ -1,4 +1,4 @@
-package com.leavemanagement.backend;
+package com.epam.elms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
