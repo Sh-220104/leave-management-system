@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ELMS Integration / API Test Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="5" name="Auth API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.AuthApiTest">
+        <methods>
+          <include name="initTokens"/>
+          <include name="logout_returns200"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.AuthApiTest -->
+    </classes>
+  </test> <!-- Auth API Tests(failed) -->
+  <test thread-count="5" name="Leave API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.LeaveApiTest">
+        <methods>
+          <include name="applyLeave_validPayload_returns200"/>
+          <include name="getPendingLeaves_authenticated_returns200"/>
+          <include name="applyLeave_pastDate_returns4xx"/>
+          <include name="leaveLifecycle_applyThenApprove_succeeds"/>
+          <include name="initTokens"/>
+          <include name="applyLeave_missingFields_returns4xx"/>
+          <include name="getEmployeeLeaves_returnsOkWithList"/>
+          <include name="rejectLeave_nonExistentId_returns4xx"/>
+          <include name="approveLeave_nonExistentId_returns4xx"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.LeaveApiTest -->
+    </classes>
+  </test> <!-- Leave API Tests(failed) -->
+  <test thread-count="5" name="Admin API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.AdminApiTest">
+        <methods>
+          <include name="adjustLeaveBalance_notFound_returns4xx"/>
+          <include name="initTokens"/>
+          <include name="createLeaveType_validParams_returns200"/>
+          <include name="adjustLeaveBalance_existingBalance_returns200"/>
+          <include name="createLeaveType_missingParams_returns4xx"/>
+          <include name="adminFlow_createTypeAndAdjustBalance_succeeds"/>
+          <include name="setRole_validEmployee_returns200"/>
+          <include name="setRole_nonExistentEmployee_returns4xx"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.AdminApiTest -->
+    </classes>
+  </test> <!-- Admin API Tests(failed) -->
+  <test thread-count="5" name="Leave Balance API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.LeaveBalanceApiTest">
+        <methods>
+          <include name="getBalance_afterAdminAdjust_returnsUpdatedBalance"/>
+          <include name="getBalance_newEmployee_returnsListPossiblyEmpty"/>
+          <include name="initTokens"/>
+          <include name="getBalance_authenticatedEmployee_returns200WithList"/>
+          <include name="getBalance_withBalances_eachEntryHasRequiredFields"/>
+          <include name="getBalance_returnsListType"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.LeaveBalanceApiTest -->
+    </classes>
+  </test> <!-- Leave Balance API Tests(failed) -->
+  <test thread-count="5" name="Leave Type API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.LeaveTypeApiTest">
+        <methods>
+          <include name="getAllLeaveTypes_eachEntryHasRequiredFields"/>
+          <include name="getAllLeaveTypes_withAdminToken_returns200"/>
+          <include name="getAllLeaveTypes_afterCreation_containsNewType"/>
+          <include name="getAllLeaveTypes_multipleCreations_allPresent"/>
+          <include name="initTokens"/>
+          <include name="getAllLeaveTypes_authenticated_returns200WithList"/>
+          <include name="getAllLeaveTypes_returnsJsonArray"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.LeaveTypeApiTest -->
+    </classes>
+  </test> <!-- Leave Type API Tests(failed) -->
+  <test thread-count="5" name="Report API Tests(failed)" verbose="0">
+    <classes>
+      <class name="com.epam.elms.integration.api.ReportApiTest">
+        <methods>
+          <include name="getLeaveReports_returnsJsonContentType"/>
+          <include name="getLeaveReports_noLeaves_returnsEmptyOrNonEmptyArray"/>
+          <include name="initTokens"/>
+          <include name="getLeaveReports_authenticated_returns200WithList"/>
+          <include name="getLeaveReports_afterApplyingLeave_reportContainsIt"/>
+        </methods>
+      </class> <!-- com.epam.elms.integration.api.ReportApiTest -->
+    </classes>
+  </test> <!-- Report API Tests(failed) -->
+</suite> <!-- Failed suite [ELMS Integration / API Test Suite] -->

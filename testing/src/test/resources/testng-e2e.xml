@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ELMS E2E / Selenium Test Suite" verbose="1" parallel="false">
+
+    <!--
+        These tests require:
+          - Backend running on http://localhost:8080
+          - Frontend running on http://localhost:3000
+          - Chrome or Firefox installed
+        Run via:
+          mvn failsafe:integration-test failsafe:verify
+    -->
+
+    <test name="Login Page E2E Tests">
+        <classes>
+            <class name="com.epam.elms.e2e.tests.LoginPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Dashboard Page E2E Tests">
+        <classes>
+            <class name="com.epam.elms.e2e.tests.DashboardPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Leave Application Page E2E Tests">
+        <classes>
+            <class name="com.epam.elms.e2e.tests.LeaveApplicationPageTest"/>
+        </classes>
+    </test>
+
+</suite>

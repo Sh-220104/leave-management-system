@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epam.elms</groupId>
+    <artifactId>leave-management-testing</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Leave Management System - Test Automation Framework</name>
+    <description>
+        Complete test automation framework for the ELMS backend.
+        Covers: Unit tests (TestNG + Mockito), Integration/API tests (RestAssured + TestNG),
+        and UI/E2E tests (Selenium WebDriver + TestNG).
+    </description>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Core versions -->
+        <testng.version>7.9.0</testng.version>
+        <mockito.version>5.11.0</mockito.version>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <selenium.version>4.19.1</selenium.version>
+        <webdrivermanager.version>5.8.0</webdrivermanager.version>
+
+        <!-- Spring Boot - must match backend -->
+        <spring-boot.version>3.4.5</spring-boot.version>
+
+        <!-- JWT (mirror the backend) -->
+        <jjwt.version>0.11.5</jjwt.version>
+
+        <!-- Misc utilities -->
+        <lombok.version>1.18.32</lombok.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <assertj.version>3.25.3</assertj.version>
+
+        <!--
+            Default suite file - unit tests only.
+            PowerShell-safe ways to override:
+              Option 1 (recommended): just run:  mvn test
+                (default already points to testng-unit.xml)
+              Option 2 (integration):   mvn test -Pintegration
+              Option 3 (all):           mvn test -Pall
+              Option 4 (quoted -D):     mvn test "-DsuiteFile=src/test/resources/testng-integration.xml"
+        -->
+        <suiteFile>src/test/resources/testng-unit.xml</suiteFile>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM manages all Spring + logging versions -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             SPRING BOOT STARTERS  (needed to compile production source
+             that is co-located in src/main/java)
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- In-memory DB for integration tests -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+            Spring Boot test utilities.
+            Exclude ALL JUnit 5 / Platform artefacts so that
+            surefire-testng is the only test runner on the classpath.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-launcher</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-commons</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-junit-jupiter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- JWT -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             TESTNG
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             MOCKITO
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-testng</artifactId>
+            <version>0.5.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             REST ASSURED
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             SELENIUM
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             ASSERTIONS AND MATCHERS
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             JACKSON  (version managed by Spring Boot BOM)
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             LOMBOK
+             ══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <!-- ── Compiler ─────────────────────────────────────────────── -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <release>${java.version}</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- ── Surefire – TestNG provider explicitly set ─────────────── -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <dependencies>
+                    <!-- Pin the TestNG provider so Surefire never falls back to JUnit -->
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>3.2.5</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--
+                        suiteXmlFile driven by ${suiteFile}.
+                        Default = testng-unit.xml  =>  just run:  mvn test
+                        Override via Maven profiles (PowerShell safe):
+                            mvn test -Punit
+                            mvn test -Pintegration
+                            mvn test -Pall
+                        Or with quoted -D (also PowerShell safe):
+                            mvn test "-DsuiteFile=src/test/resources/testng-integration.xml"
+                    -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <app.base.url>http://localhost:8080</app.base.url>
+                        <headless>true</headless>
+                    </systemPropertyVariables>
+                    <!-- Required for Mockito byte-buddy on Java 17+ -->
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+                    </argLine>
+                    <!-- Run in-process to avoid forked JVM classpath issues -->
+                    <forkCount>0</forkCount>
+                </configuration>
+            </plugin>
+
+            <!-- ── Failsafe – E2E / Selenium (integration-test phase) ────── -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.2.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>3.2.5</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng-e2e.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <app.base.url>http://localhost:3000</app.base.url>
+                        <headless>true</headless>
+                    </systemPropertyVariables>
+                    <forkCount>0</forkCount>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         PROFILES  – convenient shortcuts that work in all shells
+         ════════════════════════════════════════════════════════════════════ -->
+    <profiles>
+
+        <!-- mvn test -Punit  (default) -->
+        <profile>
+            <id>unit</id>
+            <properties>
+                <suiteFile>src/test/resources/testng-unit.xml</suiteFile>
+            </properties>
+        </profile>
+
+        <!-- mvn test -Pintegration  (requires running backend on :8080) -->
+        <profile>
+            <id>integration</id>
+            <properties>
+                <suiteFile>src/test/resources/testng-integration.xml</suiteFile>
+            </properties>
+        </profile>
+
+        <!-- mvn test -Pall  (unit + integration) -->
+        <profile>
+            <id>all</id>
+            <properties>
+                <suiteFile>src/test/resources/testng-all.xml</suiteFile>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</project>

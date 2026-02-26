@@ -1,0 +1,370 @@
+<html>
+<head>
+<title>TestNG:  Service Unit Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Service Unit Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>58/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Feb 25 21:34:16 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>1 seconds (1631 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.approveLeave_pendingRequest_approvesAndDeductsBalance()'><b>approveLeave_pendingRequest_approvesAndDeductsBalance</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: approveLeave – sets APPROVED and deducts balance correctly</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_variousEmails_correctPresence()'><b>findByEmail_variousEmails_correctPresence</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – correctly signals presence/absence for various emails<br>Parameters: alice@epam.com, true</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.getEmployeeLeaves_noRequests_returnsEmptyList()'><b>getEmployeeLeaves_noRequests_returnsEmptyList</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: getEmployeeLeaves – returns empty list when employee has no requests</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.getPendingLeaves_noPendingRequests_returnsEmptyList()'><b>getPendingLeaves_noPendingRequests_returnsEmptyList</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: getPendingLeaves – empty when there are no pending requests</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_unknownLeaveType_throwsException()'><b>applyLeave_unknownLeaveType_throwsException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – throws when leave type is not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.applyLeaveForUser_unknownLeaveType_throwsBusinessException()'><b>applyLeaveForUser_unknownLeaveType_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: applyLeaveForUser – unknown leave type throws BusinessException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.applyLeaveForUser_pastDate_throwsBusinessException()'><b>applyLeaveForUser_pastDate_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: applyLeaveForUser – past start date throws BusinessException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.approveLeave_notFound_throwsException()'><b>approveLeave_notFound_throwsException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: approveLeave – throws when leave request not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.login_employeeRole_isReturnedInResponse()'><b>login_employeeRole_isReturnedInResponse</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: login – role is propagated to the LoginResponse</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.adjustLeaveBalance_notFound_throwsRuntimeException()'><b>adjustLeaveBalance_notFound_throwsRuntimeException</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: adjustLeaveBalance – throws RuntimeException when balance not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_existingEmail_returnsEmployee()'><b>findByEmail_existingEmail_returnsEmployee</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – existing email returns Optional containing the employee</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.login_wrongPassword_throwsException()'><b>login_wrongPassword_throwsException</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: login – wrong password should throw RuntimeException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.login_validCredentials_returnsLoginResponse()'><b>login_validCredentials_returnsLoginResponse</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: login – valid credentials should return a populated LoginResponse</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.register_passwordIsEncoded()'><b>register_passwordIsEncoded</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: register – password is encoded before persisting</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.applyLeaveForUser_valid_savesPendingRequest()'><b>applyLeaveForUser_valid_savesPendingRequest</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: applyLeaveForUser – valid input saves a PENDING request</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.save_repositoryCalledExactlyOnce()'><b>save_repositoryCalledExactlyOnce</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: save – repository is called exactly once per save invocation</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.approveLeave_alreadyApprovedRequest_throwsException()'><b>approveLeave_alreadyApprovedRequest_throwsException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: approveLeave – throws when request is already approved</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.rejectLeave_notPending_throwsBusinessException()'><b>rejectLeave_notPending_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: rejectLeave – throws when request is not pending</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.ReportServiceImplTest.getLeaveSummary_returnsAllLeaveRequests()'><b>getLeaveSummary_returnsAllLeaveRequests</b><br>Test class: com.epam.elms.unit.service.ReportServiceImplTest<br>Test method: getLeaveSummary – returns all leave requests from the repository</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.ReportServiceImplTest@f95d64d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.getEmployeeLeaves_existingEmployee_returnsList()'><b>getEmployeeLeaves_existingEmployee_returnsList</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: getEmployeeLeaves – returns all leave requests for the given employee</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.findLeavesForEmployee_returnsRepositoryResult()'><b>findLeavesForEmployee_returnsRepositoryResult</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: findLeavesForEmployee – delegates to repository correctly</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.adjustLeaveBalance_existingBalance_updatesAmount()'><b>adjustLeaveBalance_existingBalance_updatesAmount</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: adjustLeaveBalance – updates the balance to the specified amount</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.login_unknownEmail_throwsException()'><b>login_unknownEmail_throwsException</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: login – unknown email should throw RuntimeException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.setRole_employeeNotFound_throwsRuntimeException()'><b>setRole_employeeNotFound_throwsRuntimeException</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: setRole – throws RuntimeException when employee not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_variousEmails_correctPresence()'><b>findByEmail_variousEmails_correctPresence</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – correctly signals presence/absence for various emails<br>Parameters: bob@epam.com, true</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.getLeaveBalances_returnsBalanceList()'><b>getLeaveBalances_returnsBalanceList</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: getLeaveBalances – returns all balances for the employee</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.applyLeaveForUser_unknownEmail_throwsBusinessException()'><b>applyLeaveForUser_unknownEmail_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: applyLeaveForUser – unknown email throws BusinessException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_delegatesToRepository()'><b>findByEmail_delegatesToRepository</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – delegates to repository and returns exactly what the repository returns</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.rejectLeave_pendingRequest_setsRejectedWithComment()'><b>rejectLeave_pendingRequest_setsRejectedWithComment</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: rejectLeave – sets REJECTED and saves the comment</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_insufficientBalance_throwsIllegalArgumentException()'><b>applyLeave_insufficientBalance_throwsIllegalArgumentException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – throws when requested days exceed available balance</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.register_newEmployee_savesAndCreatesBalances()'><b>register_newEmployee_savesAndCreatesBalances</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: register – new employee is saved and leave balances are created</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.createLeaveType_multipleTypes_eachSavedSeparately()'><b>createLeaveType_multipleTypes_eachSavedSeparately</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: createLeaveType – multiple distinct leave types can be created</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_variousDurations_succeeds()'><b>applyLeave_variousDurations_succeeds</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – succeeds for various valid leave durations when balance permits<br>Parameters: 5</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.setRole_duplicateRole_remainsIdempotent()'><b>setRole_duplicateRole_remainsIdempotent</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: setRole – assigning existing role is idempotent (Set semantics)</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.ReportServiceImplTest.getLeaveSummary_noRequests_returnsEmptyList()'><b>getLeaveSummary_noRequests_returnsEmptyList</b><br>Test class: com.epam.elms.unit.service.ReportServiceImplTest<br>Test method: getLeaveSummary – returns empty list when no leave requests exist</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.ReportServiceImplTest@f95d64d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.applyLeaveForUser_insufficientBalance_throwsBusinessException()'><b>applyLeaveForUser_insufficientBalance_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: applyLeaveForUser – insufficient balance throws BusinessException</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.save_validEmployee_returnsSavedEmployee()'><b>save_validEmployee_returnsSavedEmployee</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: save – delegates to repository and returns the persisted entity</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.ReportServiceImplTest.getLeaveSummary_mixedStatuses_allIncluded()'><b>getLeaveSummary_mixedStatuses_allIncluded</b><br>Test class: com.epam.elms.unit.service.ReportServiceImplTest<br>Test method: getLeaveSummary – result contains both PENDING and APPROVED requests</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.ReportServiceImplTest@f95d64d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_nullEmail_returnsEmpty()'><b>findByEmail_nullEmail_returnsEmpty</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – null email returns empty Optional without throwing</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_unknownEmail_returnsEmpty()'><b>findByEmail_unknownEmail_returnsEmpty</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – unknown email returns empty Optional</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_variousDurations_succeeds()'><b>applyLeave_variousDurations_succeeds</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – succeeds for various valid leave durations when balance permits<br>Parameters: 1</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.rejectLeave_pendingRequest_setsStatusRejected()'><b>rejectLeave_pendingRequest_setsStatusRejected</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: rejectLeave – sets status to REJECTED for a pending request</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_unknownEmployee_throwsException()'><b>applyLeave_unknownEmployee_throwsException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – throws when employee is not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AuthServiceImplTest.register_noRoleProvided_defaultsToEmployee()'><b>register_noRoleProvided_defaultsToEmployee</b><br>Test class: com.epam.elms.unit.service.AuthServiceImplTest<br>Test method: register – default role is EMPLOYEE when none is specified</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AuthServiceImplTest@51fe7f15</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_validRequest_savesLeaveRequest()'><b>applyLeave_validRequest_savesLeaveRequest</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – persists a PENDING leave request when balance is sufficient</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.getPendingLeaves_withPendingRequests_returnsDtoList()'><b>getPendingLeaves_withPendingRequests_returnsDtoList</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: getPendingLeaves – maps pending LeaveRequests to DTOs</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.rejectLeave_alreadyRejected_throwsException()'><b>rejectLeave_alreadyRejected_throwsException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: rejectLeave – throws when request is already processed</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.createLeaveType_validArgs_savesLeaveType()'><b>createLeaveType_validArgs_savesLeaveType</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: createLeaveType – saves a new LeaveType with correct type and description</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.approveLeave_notFound_throwsBusinessException()'><b>approveLeave_notFound_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: approveLeave – throws BusinessException when leave request not found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.getLeaveBalances_noBalances_returnsEmpty()'><b>getLeaveBalances_noBalances_returnsEmpty</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: getLeaveBalances – returns empty list when employee has no balances</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.setRole_existingEmployee_addsRole()'><b>setRole_existingEmployee_addsRole</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: setRole – adds the specified role to the employee's role set</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.findByEmail_variousEmails_correctPresence()'><b>findByEmail_variousEmails_correctPresence</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: findByEmail – correctly signals presence/absence for various emails<br>Parameters: ghost@epam.com, false</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.applyLeave_pastStartDate_throwsIllegalArgumentException()'><b>applyLeave_pastStartDate_throwsIllegalArgumentException</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: applyLeave – throws for past start date</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.save_newEmployee_idIsAssigned()'><b>save_newEmployee_idIsAssigned</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: save – the returned employee has the ID assigned by the repository</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveRequestServiceImplTest.approveLeave_pendingRequest_approvesAndDeductsBalance()'><b>approveLeave_pendingRequest_approvesAndDeductsBalance</b><br>Test class: com.epam.elms.unit.service.LeaveRequestServiceImplTest<br>Test method: approveLeave – sets status to APPROVED and deducts balance</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveRequestServiceImplTest@69bc9584</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.EmployeeServiceImplTest.save_employeeFields_preserved()'><b>save_employeeFields_preserved</b><br>Test class: com.epam.elms.unit.service.EmployeeServiceImplTest<br>Test method: save – email and name are preserved after save</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.EmployeeServiceImplTest@288728e</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.LeaveServiceImplTest.approveLeave_alreadyProcessed_throwsBusinessException()'><b>approveLeave_alreadyProcessed_throwsBusinessException</b><br>Test class: com.epam.elms.unit.service.LeaveServiceImplTest<br>Test method: approveLeave – throws BusinessException when request already processed</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.LeaveServiceImplTest@3214bad</td></tr>
+<tr>
+<td title='com.epam.elms.unit.service.AdminServiceImplTest.adjustLeaveBalance_zeroAmount_setsZero()'><b>adjustLeaveBalance_zeroAmount_setsZero</b><br>Test class: com.epam.elms.unit.service.AdminServiceImplTest<br>Test method: adjustLeaveBalance – zero amount is a valid adjustment</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.service.AdminServiceImplTest@52d7ab79</td></tr>
+</table><p>
+</body>
+</html>

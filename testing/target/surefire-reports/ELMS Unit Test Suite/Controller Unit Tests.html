@@ -1,0 +1,275 @@
+<html>
+<head>
+<title>TestNG:  Controller Unit Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Controller Unit Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>39/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Feb 25 21:34:18 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (221 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.login_serviceThrows_propagatesException()'><b>login_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: login – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveBalanceControllerTest.getBalance_multipleBalances_returnsAllEntries()'><b>getBalance_multipleBalances_returnsAllEntries</b><br>Test class: com.epam.elms.unit.controller.LeaveBalanceControllerTest<br>Test method: getBalance – returns multiple balances when employee has multiple leave types</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveBalanceControllerTest@11bfffb3</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.register_responseBody_containsAssignedId()'><b>register_responseBody_containsAssignedId</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: register – returned Employee contains the persisted ID</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.logout_stateless_noServiceCallMade()'><b>logout_stateless_noServiceCallMade</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: logout – does not call any service method (stateless)</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.createLeaveType_serviceThrows_propagatesException()'><b>createLeaveType_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: createLeaveType – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.getEmployeeLeaves_noLeaves_returnsEmptyList()'><b>getEmployeeLeaves_noLeaves_returnsEmptyList</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: getEmployeeLeaves – returns empty list when no leaves found</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.adjustLeaveBalance_delegatesToService()'><b>adjustLeaveBalance_delegatesToService</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: adjustLeaveBalance – delegates to service with correct parameters</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.setRole_delegatesToService()'><b>setRole_delegatesToService</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: setRole – delegates to service with correct parameters</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.register_serviceThrows_propagatesException()'><b>register_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: register – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveBalanceControllerTest.getBalance_serviceThrows_propagatesException()'><b>getBalance_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.LeaveBalanceControllerTest<br>Test method: getBalance – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveBalanceControllerTest@11bfffb3</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.register_delegatesToServiceOnce()'><b>register_delegatesToServiceOnce</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: register – delegates to AuthService exactly once</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.createLeaveType_validParams_returns200()'><b>createLeaveType_validParams_returns200</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: createLeaveType – valid params returns 200 OK</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.logout_always_returns200()'><b>logout_always_returns200</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: logout – always returns 200 OK with empty body</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.adjustLeaveBalance_validParams_returns200()'><b>adjustLeaveBalance_validParams_returns200</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: adjustLeaveBalance – valid params returns 200 OK</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.approveLeave_validId_returns200WithMessage()'><b>approveLeave_validId_returns200WithMessage</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: approveLeave – valid ID returns 200 OK with approval message</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.rejectLeave_serviceThrows_propagatesException()'><b>rejectLeave_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: rejectLeave – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.getPendingLeaves_returns200WithDtoList()'><b>getPendingLeaves_returns200WithDtoList</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: getPendingLeaves – returns 200 OK with list of DTOs</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.ReportControllerTest.getLeaveReports_mixedStatuses_returnsAll()'><b>getLeaveReports_mixedStatuses_returnsAll</b><br>Test class: com.epam.elms.unit.controller.ReportControllerTest<br>Test method: getLeaveReports – returns all records including approved and rejected</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.ReportControllerTest@6a7a1a0d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.createLeaveType_delegatesToService()'><b>createLeaveType_delegatesToService</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: createLeaveType – delegates to service with correct type and description</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.ReportControllerTest.getLeaveReports_delegatesToServiceOnce()'><b>getLeaveReports_delegatesToServiceOnce</b><br>Test class: com.epam.elms.unit.controller.ReportControllerTest<br>Test method: getLeaveReports – delegates to ReportService exactly once</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.ReportControllerTest@6a7a1a0d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.login_validRequest_returns200WithBody()'><b>login_validRequest_returns200WithBody</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: login – valid request returns 200 OK with LoginResponse body</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveBalanceControllerTest.getBalance_validEmployeeId_returns200WithList()'><b>getBalance_validEmployeeId_returns200WithList</b><br>Test class: com.epam.elms.unit.controller.LeaveBalanceControllerTest<br>Test method: getBalance – returns 200 OK with list of LeaveBalance objects</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveBalanceControllerTest@11bfffb3</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveBalanceControllerTest.getBalance_delegatesToServiceOnce()'><b>getBalance_delegatesToServiceOnce</b><br>Test class: com.epam.elms.unit.controller.LeaveBalanceControllerTest<br>Test method: getBalance – delegates to leaveService exactly once</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveBalanceControllerTest@11bfffb3</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.login_delegatesToServiceOnce()'><b>login_delegatesToServiceOnce</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: login – delegates to AuthService exactly once</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.approveLeave_serviceThrows_propagatesException()'><b>approveLeave_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: approveLeave – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.applyLeave_validDto_returns200WithMessage()'><b>applyLeave_validDto_returns200WithMessage</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: applyLeave – valid DTO returns 200 OK with confirmation message</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.ReportControllerTest.getLeaveReports_noLeaves_returns200EmptyList()'><b>getLeaveReports_noLeaves_returns200EmptyList</b><br>Test class: com.epam.elms.unit.controller.ReportControllerTest<br>Test method: getLeaveReports – empty list returns 200 with empty body</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.ReportControllerTest@6a7a1a0d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.getEmployeeLeaves_returnsListFromService()'><b>getEmployeeLeaves_returnsListFromService</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: getEmployeeLeaves – returns list from service</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.rejectLeave_validId_returns200WithMessage()'><b>rejectLeave_validId_returns200WithMessage</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: rejectLeave – valid ID returns 200 OK with rejection message</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.applyLeave_serviceThrows_propagatesException()'><b>applyLeave_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: applyLeave – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.adjustLeaveBalance_serviceThrows_propagatesException()'><b>adjustLeaveBalance_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: adjustLeaveBalance – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveBalanceControllerTest.getBalance_noBalances_returns200EmptyList()'><b>getBalance_noBalances_returns200EmptyList</b><br>Test class: com.epam.elms.unit.controller.LeaveBalanceControllerTest<br>Test method: getBalance – returns 200 OK with empty list when no balances exist</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveBalanceControllerTest@11bfffb3</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AuthControllerTest.register_validRequest_returns200WithEmployee()'><b>register_validRequest_returns200WithEmployee</b><br>Test class: com.epam.elms.unit.controller.AuthControllerTest<br>Test method: register – valid request returns 200 OK with created Employee</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AuthControllerTest@59f45950</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.ReportControllerTest.getLeaveReports_serviceThrows_propagatesException()'><b>getLeaveReports_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.ReportControllerTest<br>Test method: getLeaveReports – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.ReportControllerTest@6a7a1a0d</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.adjustLeaveBalance_zeroAmount_returns200()'><b>adjustLeaveBalance_zeroAmount_returns200</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: adjustLeaveBalance – zero amount is a valid call</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.LeaveControllerTest.getPendingLeaves_empty_returns200EmptyList()'><b>getPendingLeaves_empty_returns200EmptyList</b><br>Test class: com.epam.elms.unit.controller.LeaveControllerTest<br>Test method: getPendingLeaves – empty list returns 200 with empty body</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.LeaveControllerTest@7871d261</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.setRole_serviceThrows_propagatesException()'><b>setRole_serviceThrows_propagatesException</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: setRole – service exception propagates to caller</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.AdminControllerTest.setRole_validParams_returns200()'><b>setRole_validParams_returns200</b><br>Test class: com.epam.elms.unit.controller.AdminControllerTest<br>Test method: setRole – valid params returns 200 OK</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.AdminControllerTest@58164e9a</td></tr>
+<tr>
+<td title='com.epam.elms.unit.controller.ReportControllerTest.getLeaveReports_returns200WithList()'><b>getLeaveReports_returns200WithList</b><br>Test class: com.epam.elms.unit.controller.ReportControllerTest<br>Test method: getLeaveReports – returns 200 OK with a list of leave summaries</td>
+<td></td>
+<td>0</td>
+<td>com.epam.elms.unit.controller.ReportControllerTest@6a7a1a0d</td></tr>
+</table><p>
+</body>
+</html>
